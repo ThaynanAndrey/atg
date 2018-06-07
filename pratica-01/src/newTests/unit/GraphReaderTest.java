@@ -86,10 +86,10 @@ public class GraphReaderTest {
     }
 
     /**
-     * Test if read file and create a {@link RawGraph} to unweigthed dense graph.
+     * Test if read file and create a {@link RawGraph} to dense unweigthed graph.
      */
     @Test
-    public void readTestUnweightedDenseGrap() {
+    public void readDenseUnweightedGraphTest() {
         String path = "src/newTests/resources/dense_unweighted_graph_500.txt";
         RawGraph rawGraph = GraphReader.read(path);
 
@@ -98,10 +98,10 @@ public class GraphReaderTest {
     }
 
     /**
-     * Test if read file and create a {@link RawGraph} to weigthed dense graph.
+     * Test if read file and create a {@link RawGraph} to dense weigthed graph.
      */
     @Test
-    public void readTestweightedDenseGrap() {
+    public void readDenseWeightedGraphTest() {
         String path = "src/newTests/resources/dense_weighted_graph_500.txt";
         RawGraph rawGraph = GraphReader.read(path);
 
@@ -113,7 +113,7 @@ public class GraphReaderTest {
      * Test if read file and create a {@link RawGraph} to unweigthed sparse graph.
      */
     @Test
-    public void readTestUnweightedSparseGrap() {
+    public void readSparseUnweightedGrapTest() {
         String path = "src/newTests/resources/sparse_unweighted_graph_500.txt";
         RawGraph rawGraph = GraphReader.read(path);
 
@@ -125,7 +125,7 @@ public class GraphReaderTest {
      * Test if read file and create a {@link RawGraph} to weigthed sparse graph.
      */
     @Test
-    public void readTestWeightedSparseGrap() {
+    public void readSparseWeightedGrapTest() {
         String path = "src/newTests/resources/sparse_weighted_graph_500.txt";
         RawGraph rawGraph = GraphReader.read(path);
 

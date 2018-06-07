@@ -105,7 +105,7 @@ public class GraphLibraryTest {
         String fileContent = "6, 1 2 1.2, 1 3 0.5, 2 3 0.7, 5 6 1.3, 6 3 2.1, 6 1 5.2";
         insertFile(path, fileContent);
 
-        Graph graph = graphLibrary.readGraph(path);
+        Graph graph = graphLibrary.readWeightedGraph(path);
         Set<Integer> allVertexes = graph.getNodeMap().keySet();
         Set<Edge> allEdges = getGraphEdges(graph);
         int vertexAmount = 6;
