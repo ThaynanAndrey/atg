@@ -1,4 +1,4 @@
-package newTests;
+package newTests.regression;
 
 import graph.Edge;
 import graph.Graph;
@@ -11,11 +11,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -99,20 +97,6 @@ public class GraphLibraryTest {
 //        assertTrue(allVertexes.contains(4));
         assertTrue(allVertexes.contains(5));
         assertTrue(allVertexes.contains(6));
-
-        Edge e1 = new Edge(new Integer(1), new Integer(2)),
-                e2 = new Edge(1, 3),
-                e3 = new Edge(2, 3),
-                e4 = new Edge(5, 6),
-                e5 = new Edge(6, 3),
-                e6 = new Edge(6, 1);
-
-//        assertTrue(allEdges.contains(e1));
-//        assertTrue(allEdges.contains(e2));
-//        assertTrue(allEdges.contains(e3));
-//        assertTrue(allEdges.contains(e4));
-//        assertTrue(allEdges.contains(e5));
-//        assertTrue(allEdges.contains(e6));
     }
 
     /**
@@ -139,19 +123,5 @@ public class GraphLibraryTest {
 //        assertTrue(allVertexes.contains(4));
         assertTrue(allVertexes.contains(5));
         assertTrue(allVertexes.contains(6));
-
-        Edge e1 = new Edge(1, 2, 1.2),
-                e2 = new Edge(1, 3, 0.5),
-                e3 = new Edge(2, 3, 0.7),
-                e4 = new Edge(5, 6, 1.3),
-                e5 = new Edge(6, 3, 2.1),
-                e6 = new Edge(6, 1, 5.2);
-
-//        assertTrue(allEdges.contains(e1));
-//        assertTrue(allEdges.contains(e2));
-//        assertTrue(allEdges.contains(e3));
-//        assertTrue(allEdges.contains(e4));
-//        assertTrue(allEdges.contains(e5));
-//        assertTrue(allEdges.contains(e6));
     }
 }
