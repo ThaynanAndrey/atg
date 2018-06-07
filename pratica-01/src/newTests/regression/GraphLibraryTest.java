@@ -105,5 +105,5 @@ public class GraphLibraryTest {
         assertTrue(allVertexes.contains(5));
         assertTrue(allVertexes.contains(6));
     }
-    
+
 }
