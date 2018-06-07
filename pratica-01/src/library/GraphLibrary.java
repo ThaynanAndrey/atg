@@ -4,7 +4,7 @@ import graph.*;
 
 public class GraphLibrary {
 	
-	public Graph readGraph(String path) {
+	public synchronized Graph readGraph(String path) {
 		return GraphCreator.createGraph(path);
 	}
 	
