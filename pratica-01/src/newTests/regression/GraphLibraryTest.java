@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static java.lang.Character.LINE_SEPARATOR;
 import static org.junit.jupiter.api.Assertions.*;
