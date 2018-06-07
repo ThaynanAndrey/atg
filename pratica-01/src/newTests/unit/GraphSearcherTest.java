@@ -25,6 +25,10 @@ public class GraphSearcherTest {
     private Edge edge23 = new Edge(2,3);
     private Edge edge56 = new Edge(5,6);
 
+
+    /**
+     * Tests set up
+     */
     @BeforeEach
     public void setUp(){
         setUpCompletegraph();
@@ -32,6 +36,17 @@ public class GraphSearcherTest {
         setUpRegularGraph();
     }
 
+    /**
+     * Create a regular graph with the following structure
+     *      1 2 3 4 5 6
+     * 1    0 I I 0 0 0
+     * 2    I 0 0 I 0 0
+     * 3    I 0 0 I 0 0
+     * 4    0 I I 0 0 0
+     *
+     * 0 = there's not a edge between these vertexes.
+     * I = there's a edge between these vertexes.
+     */
     private void setUpRegularGraph(){
         regularGraph = new Graph();
         regularGraph.addEdge(1,edge12);
@@ -47,6 +62,17 @@ public class GraphSearcherTest {
         regularGraph.addEdge(4,edge34);
     }
 
+    /**
+     * Create a complete graph with the following structure
+     *      1 2 3 4 5 6
+     * 1    0 I I I 0 0
+     * 2    I 0 0 I 0 0
+     * 3    I 0 0 I 0 0
+     * 4    I I I 0 0 0
+     *
+     * 0 = there's not a edge between these vertexes.
+     * I = there's a edge between these vertexes.
+     */
     private void setUpCompletegraph(){
         completeGraph = new Graph();
         completeGraph.addEdge(1,edge12);
@@ -69,6 +95,19 @@ public class GraphSearcherTest {
 
     }
 
+    /**
+     * Create a disconnected graph with the following structure
+     *      1 2 3 4 5 6
+     * 1    0 I I 0 0 0
+     * 2    I 0 0 I 0 0
+     * 3    I 0 0 I 0 0
+     * 4    0 I I 0 0 0
+     * 5    0 0 0 0 0 I
+     * 6    0 0 0 0 I 0
+     *
+     * 0 = there's not a edge between these vertexes.
+     * I = there's a edge between these vertexes.
+     */
     private void setUpDisconectedGraph(){
         disconnectedGraph = new Graph();
         disconnectedGraph.addEdge(1,edge12);
@@ -87,6 +126,9 @@ public class GraphSearcherTest {
         disconnectedGraph.addEdge(6,edge56);
     }
 
+    /**
+     * Test the BFS in a regular Graph
+     */
     @Test
     public void BFSRegularGraphTest(){
         String regularBFSFrom1 = "1 - 0 -" + "\n"
@@ -103,6 +145,9 @@ public class GraphSearcherTest {
         assertEquals(regularBFSFrom3,GraphSearcher.bfs(regularGraph,3));
     }
 
+    /**
+     * Test the BFS in a complete Graph
+     */
     @Test
     public void BFSCompleteGraphTest(){
         String completeBFSFrom1 = "1 - 0 -" + "\n"
@@ -119,7 +164,9 @@ public class GraphSearcherTest {
         assertEquals(completeBFSFrom1,GraphSearcher.bfs(completeGraph,1));
         assertEquals(completeBFSFrom4, GraphSearcher.bfs(completeGraph,4));
     }
-
+    /**
+     * Test the BFS in a disconnected Graph
+     */
     @Test
     public void BFSDisconectedGraphTest(){
         String disconnectedBFSFrom1 = "1 - 0 -" + "\n"
