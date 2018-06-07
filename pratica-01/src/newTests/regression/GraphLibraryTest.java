@@ -1,6 +1,5 @@
 package newTests.regression;
 
-import graph.Edge;
 import graph.Graph;
 import library.GraphLibrary;
 import newTests.utils.UtilsTest;
@@ -10,9 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -24,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class GraphLibraryTest {
 
     GraphLibrary graphLibrary;
+
 
     /**
      * Tests set up.
@@ -41,6 +39,7 @@ public class GraphLibraryTest {
         UtilsTest.deleteFile("graph.txt");
         UtilsTest.deleteFile("weighted_graph.txt");
     }
+
 
     /**
      * Insert file for future tests.
@@ -106,4 +105,5 @@ public class GraphLibraryTest {
         assertTrue(allVertexes.contains(5));
         assertTrue(allVertexes.contains(6));
     }
+
 }
