@@ -269,4 +269,16 @@ public class GraphSearcherTest {
         assertEquals(disconnectedFrom5, GraphSearcher.dfs(disconnectedGraph,5));
     }
 
+    /**
+     * Test DFS in a graph with loop
+     */
+    @Test
+    public void DFSLoopTest() {
+        String loopFrom1 = "1 - - 0\n"
+            + "2 - 1 1\n"
+            + "3 - 4 3\n"
+            + "4 - 2 2\n";
+        assertEquals(loopFrom1, GraphSearcher.dfs(loopGraph, 1));
+    }
+
 }
