@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static newTests.utils.UtilsTest.LINE_SEPARATOR;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -23,15 +24,8 @@ import static org.junit.jupiter.api.Assertions.fail;
  */
 public class GraphLibraryTest {
 
-    GraphLibrary graphLibrary;
-    Graph regularGraph;
-    Edge edge12;
-    Edge edge13;
-    Edge edge16;
-    Edge edge23;
-    Edge edge24;
-    Edge edge45;
-    Edge edge66;
+    private GraphLibrary graphLibrary;
+    private Graph regularGraph;
 
     /**
      * Tests set up.
@@ -39,13 +33,6 @@ public class GraphLibraryTest {
     @BeforeEach
     public void setUp() {
         graphLibrary = new GraphLibrary();
-        edge12 = new Edge(1,2);
-        edge13 = new Edge(1,3);
-        edge16 = new Edge(1,6);
-        edge23 = new Edge(2,3);
-        edge24 = new Edge(2,4);
-        edge45 = new Edge(4,5);
-        edge66 = new Edge(6,6);
         setUpRegularGraph();
     }
 
@@ -73,22 +60,24 @@ public class GraphLibraryTest {
      */
     private void setUpRegularGraph(){
         regularGraph = new Graph();
+        Edge edge12 = new Edge(1,2),
+            edge13 = new Edge(1,3),
+            edge16 = new Edge(1,6),
+            edge23 = new Edge(2,3),
+            edge24 = new Edge(2,4),
+            edge45 = new Edge(4,5),
+            edge66 = new Edge(6,6);
         regularGraph.addEdge(1,edge12);
         regularGraph.addEdge(1,edge13);
         regularGraph.addEdge(1,edge16);
-
         regularGraph.addEdge(2,edge12);
         regularGraph.addEdge(2,edge23);
         regularGraph.addEdge(2,edge24);
-
         regularGraph.addEdge(3,edge13);
         regularGraph.addEdge(3,edge23);
-
         regularGraph.addEdge(4,edge24);
         regularGraph.addEdge(4,edge45);
-
         regularGraph.addEdge(5,edge45);
-
         regularGraph.addEdge(6,edge16);
         regularGraph.addEdge(6,edge66);
     }
@@ -179,11 +168,11 @@ public class GraphLibraryTest {
      */
     @Test
     public void BFSRegularGraphTest(){
-        String regularBFSFrom1 = "1 - 0 -\n"
-                + "2 - 1 1\n"
-                + "3 - 1 1\n"
-                + "4 - 2 2\n"
-                + "5 - 3 4\n"
+        String regularBFSFrom1 = "1 - 0 -" + LINE_SEPARATOR
+                + "2 - 1 1"+ LINE_SEPARATOR
+                + "3 - 1 1"+ LINE_SEPARATOR
+                + "4 - 2 2"+ LINE_SEPARATOR
+                + "5 - 3 4"+ LINE_SEPARATOR
                 + "6 - 1 1";
 
         assertEquals(regularBFSFrom1, graphLibrary.BFS(regularGraph,1));
