@@ -17,6 +17,7 @@ public class GraphSearcherTest {
     private Graph regularGraph;
     private Graph completeGraph;
     private Graph disconnectedGraph;
+    private Graph loopGraph;
     private Edge edge12 = new Edge(1,2);
     private Edge edge13 = new Edge(1,3);
     private Edge edge24 = new Edge(2,4);
@@ -24,6 +25,7 @@ public class GraphSearcherTest {
     private Edge edge14 = new Edge(1,4);
     private Edge edge23 = new Edge(2,3);
     private Edge edge56 = new Edge(5,6);
+    private Edge edge11 = new Edge(1,1);
 
 
     /**
@@ -34,6 +36,7 @@ public class GraphSearcherTest {
         setUpCompletegraph();
         setUpDisconectedGraph();
         setUpRegularGraph();
+        setUpLoopGraph();
     }
 
     /**
@@ -127,6 +130,34 @@ public class GraphSearcherTest {
     }
 
     /**
+     * Create a graph with a loop with the following structure
+     *      1 2 3 4 5 6
+     * 1    I I I 0 0 0
+     * 2    I 0 0 I 0 0
+     * 3    I 0 0 I 0 0
+     * 4    0 I I 0 0 0
+     *
+     * 0 = there's not a edge between these vertexes.
+     * I = there's a edge between these vertexes.
+     */
+    private void setUpLoopGraph(){
+        loopGraph = new Graph();
+        loopGraph.addEdge(1,edge12);
+        loopGraph.addEdge(2,edge12);
+
+        loopGraph.addEdge(1,edge13);
+        loopGraph.addEdge(3,edge13);
+
+        loopGraph.addEdge(2,edge24);
+        loopGraph.addEdge(4,edge24);
+
+        loopGraph.addEdge(3,edge34);
+        loopGraph.addEdge(4,edge34);
+
+        loopGraph.addEdge(1,edge11);
+    }
+
+    /**
      * Test the BFS in a regular Graph
      */
     @Test
@@ -179,6 +210,24 @@ public class GraphSearcherTest {
 
         assertEquals(disconnectedBFSFrom1,GraphSearcher.bfs(disconnectedGraph,1));
         assertEquals(disconnectedBFSFrom5, GraphSearcher.bfs(disconnectedGraph, 5));
+    }
+    /**
+     * Test BFS in a graph with a loop
+     */
+    @Test
+    public void BFSLoopGraph(){
+        String loopBFSFrom1 = "1 - 0 -" + "\n"
+                + "2 - 1 1" + "\n"
+                + "3 - 1 1" + "\n"
+                + "4 - 2 2";
+
+        String loopBFSFrom3 = "1 - 1 3" + "\n"
+                + "2 - 2 1" + "\n"
+                + "3 - 0 -" + "\n"
+                + "4 - 1 3";
+
+        assertEquals(loopBFSFrom1,GraphSearcher.bfs(loopGraph,1));
+        assertEquals(loopBFSFrom3, GraphSearcher.bfs(loopGraph,3));
     }
 
     @Test
