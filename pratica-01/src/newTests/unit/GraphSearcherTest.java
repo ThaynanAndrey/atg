@@ -6,6 +6,7 @@ import graph.GraphSearcher;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static newTests.utils.UtilsTest.LINE_SEPARATOR;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -162,14 +163,14 @@ public class GraphSearcherTest {
      */
     @Test
     public void BFSRegularGraphTest(){
-        String regularBFSFrom1 = "1 - 0 -" + "\n"
-                + "2 - 1 1" + "\n"
-                + "3 - 1 1" + "\n"
+        String regularBFSFrom1 = "1 - 0 -" + LINE_SEPARATOR
+                + "2 - 1 1" + LINE_SEPARATOR
+                + "3 - 1 1" + LINE_SEPARATOR
                 + "4 - 2 2";
 
-        String regularBFSFrom3 = "1 - 1 3" + "\n"
-                + "2 - 2 1" + "\n"
-                + "3 - 0 -" + "\n"
+        String regularBFSFrom3 = "1 - 1 3" + LINE_SEPARATOR
+                + "2 - 2 1" + LINE_SEPARATOR
+                + "3 - 0 -" + LINE_SEPARATOR
                 + "4 - 1 3";
 
         assertEquals(regularBFSFrom1, GraphSearcher.bfs(regularGraph,1));
@@ -181,14 +182,14 @@ public class GraphSearcherTest {
      */
     @Test
     public void BFSCompleteGraphTest(){
-        String completeBFSFrom1 = "1 - 0 -" + "\n"
-                + "2 - 1 1" + "\n"
-                + "3 - 1 1" + "\n"
+        String completeBFSFrom1 = "1 - 0 -" + LINE_SEPARATOR
+                + "2 - 1 1" + LINE_SEPARATOR
+                + "3 - 1 1" + LINE_SEPARATOR
                 + "4 - 1 1";
 
-        String completeBFSFrom4 = "1 - 1 4" + "\n"
-                + "2 - 1 4" + "\n"
-                + "3 - 1 4" + "\n"
+        String completeBFSFrom4 = "1 - 1 4" + LINE_SEPARATOR
+                + "2 - 1 4" + LINE_SEPARATOR
+                + "3 - 1 4" + LINE_SEPARATOR
                 + "4 - 0 -";
 
 
@@ -200,12 +201,12 @@ public class GraphSearcherTest {
      */
     @Test
     public void BFSDisconectedGraphTest(){
-        String disconnectedBFSFrom1 = "1 - 0 -" + "\n"
-                + "2 - 1 1" + "\n"
-                + "3 - 1 1" + "\n"
+        String disconnectedBFSFrom1 = "1 - 0 -" + LINE_SEPARATOR
+                + "2 - 1 1" + LINE_SEPARATOR
+                + "3 - 1 1" + LINE_SEPARATOR
                 + "4 - 2 2";
 
-        String disconnectedBFSFrom5 = "5 - 0 -" + "\n"
+        String disconnectedBFSFrom5 = "5 - 0 -" + LINE_SEPARATOR
                 + "6 - 1 5";
 
         assertEquals(disconnectedBFSFrom1,GraphSearcher.bfs(disconnectedGraph,1));
@@ -217,14 +218,14 @@ public class GraphSearcherTest {
      */
     @Test
     public void BFSLoopGraphTest(){
-        String loopBFSFrom1 = "1 - 0 -" + "\n"
-                + "2 - 1 1" + "\n"
-                + "3 - 1 1" + "\n"
+        String loopBFSFrom1 = "1 - 0 -" + LINE_SEPARATOR
+                + "2 - 1 1" + LINE_SEPARATOR
+                + "3 - 1 1" + LINE_SEPARATOR
                 + "4 - 2 2";
 
-        String loopBFSFrom3 = "1 - 1 3" + "\n"
-                + "2 - 2 1" + "\n"
-                + "3 - 0 -" + "\n"
+        String loopBFSFrom3 = "1 - 1 3" + LINE_SEPARATOR
+                + "2 - 2 1" + LINE_SEPARATOR
+                + "3 - 0 -" + LINE_SEPARATOR
                 + "4 - 1 3";
 
         assertEquals(loopBFSFrom1,GraphSearcher.bfs(loopGraph,1));
@@ -236,10 +237,10 @@ public class GraphSearcherTest {
      */
     @Test
     public void DFSRegularGraphTest() {
-        String regularFrom1 = "1 - - 0\n"
-            + "2 - 1 1\n"
-            + "4 - 2 2\n"
-            + "3 - 4 3\n";
+        String regularFrom1 = "1 - - 0" + LINE_SEPARATOR
+            + "2 - 1 1" + LINE_SEPARATOR
+            + "4 - 2 2" + LINE_SEPARATOR
+            + "3 - 4 3" + LINE_SEPARATOR;
         assertEquals(regularFrom1, GraphSearcher.dfs(regularGraph,1));
     }
 
@@ -248,10 +249,10 @@ public class GraphSearcherTest {
      */
     @Test
     public void DFSCompleteGraphTest() {
-        String completeFrom1 = "1 - - 0\n"
-            + "2 - 1 1\n"
-            + "4 - 2 2\n"
-            + "3 - 4 3\n";
+        String completeFrom1 = "1 - - 0" + LINE_SEPARATOR
+            + "2 - 1 1" + LINE_SEPARATOR
+            + "4 - 2 2" + LINE_SEPARATOR
+            + "3 - 4 3" + LINE_SEPARATOR;
         assertEquals(completeFrom1, GraphSearcher.dfs(completeGraph,1));
     }
 
@@ -260,12 +261,12 @@ public class GraphSearcherTest {
      */
     @Test
     public void DFSDisconnectedGraphTest() {
-        String disconnectedFrom1 = "1 - - 0\n"
-                + "2 - 1 1\n"
-                + "4 - 2 2\n"
-                + "3 - 4 3\n";
-        String disconnectedFrom5 = "5 - - 0\n"
-                + "6 - 5 1\n";
+        String disconnectedFrom1 = "1 - - 0" + LINE_SEPARATOR
+                + "2 - 1 1" + LINE_SEPARATOR
+                + "4 - 2 2" + LINE_SEPARATOR
+                + "3 - 4 3" + LINE_SEPARATOR;
+        String disconnectedFrom5 = "5 - - 0" + LINE_SEPARATOR
+                + "6 - 5 1" + LINE_SEPARATOR;
         assertEquals(disconnectedFrom1, GraphSearcher.dfs(disconnectedGraph,1));
         assertEquals(disconnectedFrom5, GraphSearcher.dfs(disconnectedGraph,5));
     }
@@ -275,10 +276,10 @@ public class GraphSearcherTest {
      */
     @Test
     public void DFSLoopTest() {
-        String loopFrom1 = "1 - - 0\n"
-            + "2 - 1 1\n"
-            + "3 - 4 3\n"
-            + "4 - 2 2\n";
+        String loopFrom1 = "1 - - 0" + LINE_SEPARATOR
+            + "2 - 1 1" + LINE_SEPARATOR
+            + "3 - 4 3" + LINE_SEPARATOR
+            + "4 - 2 2" + LINE_SEPARATOR;
         assertEquals(loopFrom1, GraphSearcher.dfs(loopGraph, 1));
     }
 
