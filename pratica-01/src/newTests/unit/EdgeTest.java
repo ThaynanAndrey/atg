@@ -19,6 +19,9 @@ public class EdgeTest {
     private Integer targetVertex;
     private Double weight;
 
+    /**
+     * Test's set up.
+     */
     @BeforeEach
     void setUp() {
         originVertex = 1;
@@ -132,7 +135,14 @@ public class EdgeTest {
         assertEquals(0, weightedEdge.compareTo2(weightedEdgeCopy));
         assertEquals(1, weightedEdge.compareTo2(diffWeightedEdge));
         assertEquals(-1, diffWeightedEdge.compareTo2(weightedEdge));
-        edge.compareTo2(weightedEdge);
+    }
+
+    /**
+     * Tests the compareTo2 method using a edge without weight.
+     */
+    @Test
+    void compareTo2WeightNullTest() {
+        edge.compareTo2(weightedEdge); // Throws exception
     }
 
     /**
