@@ -12,6 +12,8 @@ import java.io.IOException;
  */
 public class UtilsTest {
 
+    public static final String LINE_SEPARATOR = "\n";
+
     /**
      * Insert file for future tests.
      *
