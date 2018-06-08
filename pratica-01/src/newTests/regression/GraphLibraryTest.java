@@ -29,6 +29,7 @@ public class GraphLibraryTest {
 
     private GraphLibrary graphLibrary;
     private Graph regularGraph;
+    private Graph disconectedGraph;
 
     /**
      * Tests set up.
@@ -37,6 +38,7 @@ public class GraphLibraryTest {
     public void setUp() {
         graphLibrary = new GraphLibrary();
         setUpRegularGraph();
+        setUpDisconnectedGraph();
     }
 
     /**
@@ -47,6 +49,23 @@ public class GraphLibraryTest {
         UtilsTest.deleteFile("graph.txt");
         UtilsTest.deleteFile("weighted_graph.txt");
     }
+    
+    /**
+	 * Create a disconnected Graph
+	 */
+	private void setUpDisconnectedGraph() {
+		Edge edge12 = new Edge(1,2);
+		Edge edge34 = new Edge(3,4);
+		
+		this.disconectedGraph = new Graph();
+		this.disconectedGraph.addEdge(1, edge12);
+		this.disconectedGraph.addEdge(2, edge12);
+		
+		this.disconectedGraph.addEdge(3, edge34);
+		this.disconectedGraph.addEdge(4, edge34);
+		
+	}
+	
 
     /**
      * Create a regular graph with the following structure
@@ -449,6 +468,11 @@ public class GraphLibraryTest {
                  + "5 - 3 4" + LINE_SEPARATOR
                  + "6 - 1 1";
          assertEquals(regularMST, graphLibrary.mst(regularGraph));
+    }
+    
+    void DisconnetedMSTTest() {
+    	String disconnectedMST = "Grafo desconectado";
+		assertEquals(disconnectedMST, graphLibrary.mst(disconectedGraph));
     }
 
     /**
