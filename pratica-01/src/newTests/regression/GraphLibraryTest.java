@@ -471,7 +471,7 @@ public class GraphLibraryTest {
     }
     
     void DisconnetedMSTTest() {
-    	String disconnectedMST = "Grafo desconectado";
+    	String disconnectedMST = "Grafo desconctado";
 		assertEquals(disconnectedMST, graphLibrary.mst(disconectedGraph));
     }
 

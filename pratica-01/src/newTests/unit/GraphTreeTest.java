@@ -215,7 +215,7 @@ public class GraphTreeTest {
 	 */
 	@Test
 	public void MSTDisconnectedGraphTest() {
-		String disconnectedMST = "Grafo desconectado";
+		String disconnectedMST = "Grafo desconctado";
 		assertEquals(disconnectedMST, GraphTree.mst(disconectedGraph));
 	}
 	
