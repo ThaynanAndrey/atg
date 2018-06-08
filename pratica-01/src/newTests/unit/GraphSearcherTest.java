@@ -181,6 +181,9 @@ public class GraphSearcherTest {
         assertEquals(disconnectedBFSFrom5, GraphSearcher.bfs(disconnectedGraph, 5));
     }
 
+    /**
+     * Test DFS in a regular graph
+     */
     @Test
     public void DFSRegularGraphTest() {
         String regularFrom1 = "1 - - 0\n"
@@ -190,6 +193,9 @@ public class GraphSearcherTest {
         assertEquals(regularFrom1, GraphSearcher.dfs(regularGraph,1));
     }
 
+    /**
+     * Test DFS in a complete graph
+     */
     @Test
     public void DFSCompleteGraphTest() {
         String completeFrom1 = "1 - - 0\n"
@@ -199,6 +205,9 @@ public class GraphSearcherTest {
         assertEquals(completeFrom1, GraphSearcher.dfs(completeGraph,1));
     }
 
+    /**
+     * Test DFS in a disconnected graph
+     */
     @Test
     public void DFSDisconnectedGraphTest() {
         String disconnectedFrom1 = "1 - - 0\n"
