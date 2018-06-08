@@ -13,6 +13,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import static newTests.utils.UtilsTest.LINE_SEPARATOR;
+
 /**
  * Class to test {@link GraphFormatter}.
  *
@@ -20,7 +22,6 @@ import java.io.IOException;
  */
 public class GraphFormatterTest {
 
-    private static final String LINE_SEPARATOR = "\n";
     private static final String GRAPH_EXAMPLE_1_PATH = "src/sample_graph.txt";
     private static final String WEIGHTED_GRAPH_EXAMPLE_1_PATH = "src/sample_weighted_graph.txt";
     private static final String WEIGHTED_GRAPH_EXAMPLE_2_PATH = "src/sample_weighted_graph2.txt";
