@@ -195,7 +195,13 @@ public class GraphLibraryTest {
     
     @Test
     void MSTTest() {
-    	String path = "weighted_graph.txt";
+    	 String regularMST = "1 - 0 -" + LINE_SEPARATOR
+    			 + "2 - 1 1" + LINE_SEPARATOR
+                 + "3 - 1 1" + LINE_SEPARATOR
+                 + "4 - 2 2" + LINE_SEPARATOR
+                 + "5 - 3 4" + LINE_SEPARATOR
+                 + "6 - 1 1";
+         assertEquals(regularMST, graphLibrary.mst(regularGraph));
     }
 
     /**
