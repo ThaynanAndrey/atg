@@ -281,7 +281,27 @@ public class GraphLibraryTest {
                 .append("6 1 0 0 0 0 1")
                 .toString();
 
-        String matrix = GraphFormatter.getAdjacencyMatrix(regularGraph);
+        String matrix = graphLibrary.graphRepresentation(regularGraph, "AM");
+        Assert.assertEquals(expectedMatrix, matrix);
+    }
+
+    /**
+     * Tests the matrix representation of first weighted graph of example.
+     */
+    @Test
+    void weightedGraphExample1MatrixRepresentationTest() {
+        String expectedMatrix = new StringBuilder()
+                .append("  1 2 3 4 5").append(LINE_SEPARATOR)
+                .append("1 0 0.1 0 0 1").append(LINE_SEPARATOR)
+                .append("2 0.1 0 0 0 0,2").append(LINE_SEPARATOR)
+                .append("3 0 0 0 -9,5 5").append(LINE_SEPARATOR)
+                .append("4 0 0 -9.5 0 2.3").append(LINE_SEPARATOR)
+                .append("5 1 0.2 5 2.3 0")
+                .toString();
+
+        Graph weightedGraphExample = graphLibrary.readWeightedGraph("src/sample_weighted_graph.txt");
+
+        String matrix = GraphFormatter.getAdjacencyMatrix(weightedGraphExample);
         Assert.assertEquals(expectedMatrix, matrix);
     }
 

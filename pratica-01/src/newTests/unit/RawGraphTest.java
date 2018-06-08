@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * Class to test {@link RawGraph}.
@@ -33,13 +35,16 @@ public class RawGraphTest {
      */
     @Test
     public void testConstructorRawGraph() {
-        assertEquals(rawGraph.getRawGraph(), rawGraphList);
+        RawGraph rawGraph = new RawGraph();
+        assertNotNull(rawGraph);
+        assertNotNull(rawGraph.getRawGraph());
+        assertEquals(this.rawGraph.getRawGraph(), rawGraphList);
 
         List<String> newRawGraphList = new ArrayList<>();
         newRawGraphList.add("1");
-        rawGraph = new RawGraph(newRawGraphList);
+        this.rawGraph = new RawGraph(newRawGraphList);
 
-        assertEquals(rawGraph.getRawGraph(), newRawGraphList);
+        assertEquals(this.rawGraph.getRawGraph(), newRawGraphList);
     }
 
     /**

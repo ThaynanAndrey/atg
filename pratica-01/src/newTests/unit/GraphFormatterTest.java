@@ -4,7 +4,6 @@ import graph.Edge;
 import graph.Graph;
 import graph.GraphCreator;
 import graph.GraphFormatter;
-import library.GraphLibrary;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -81,11 +80,11 @@ public class GraphFormatterTest {
     @Test
     void weightedGraphExample1ListRepresentationTest() {
         String expectedList = new StringBuilder()
-                .append("1 - 2(0,1) 5(1)").append(LINE_SEPARATOR)
-                .append("2 - 1(0,1) 5(0,2)").append(LINE_SEPARATOR)
-                .append("3 - 4(-9,5) 5(5)").append(LINE_SEPARATOR)
-                .append("4 - 3(-9,5) 5(2,3)").append(LINE_SEPARATOR)
-                .append("5 - 1(1) 2(0,2) 3(5) 4(2,3)")
+                .append("1 - 2(0.1) 5(1)").append(LINE_SEPARATOR)
+                .append("2 - 1(0.1) 5(0.2)").append(LINE_SEPARATOR)
+                .append("3 - 4(-9.5) 5(5)").append(LINE_SEPARATOR)
+                .append("4 - 3(-9.5) 5(2.3)").append(LINE_SEPARATOR)
+                .append("5 - 1(1) 2(0.2) 3(5) 4(2.3)")
                 .toString();
 
         String list = GraphFormatter.getAdjacencyList(weightedGraphExample1);
@@ -98,11 +97,11 @@ public class GraphFormatterTest {
     @Test
     void weightedGraphExample2ListRepresentationTest() {
         String expectedList = new StringBuilder()
-                .append("1 - 2(0,1) 5(1)").append(LINE_SEPARATOR)
-                .append("2 - 1(0,1) 5(0,2)").append(LINE_SEPARATOR)
-                .append("3 - 4(9,5) 5(5)").append(LINE_SEPARATOR)
-                .append("4 - 3(9,5) 5(2,3)").append(LINE_SEPARATOR)
-                .append("5 - 1(1) 2(0,2) 3(5) 4(2,3)")
+                .append("1 - 2(0.1) 5(1)").append(LINE_SEPARATOR)
+                .append("2 - 1(0.1) 5(0.2)").append(LINE_SEPARATOR)
+                .append("3 - 4(9.5) 5(5)").append(LINE_SEPARATOR)
+                .append("4 - 3(9.5) 5(2.3)").append(LINE_SEPARATOR)
+                .append("5 - 1(1) 2(0.2) 3(5) 4(2.3)")
                 .toString();
 
         String list = GraphFormatter.getAdjacencyList(weightedGraphExample2);
@@ -134,11 +133,11 @@ public class GraphFormatterTest {
     void weightedGraphExample1MatrixRepresentationTest() {
         String expectedMatrix = new StringBuilder()
                 .append("  1 2 3 4 5").append(LINE_SEPARATOR)
-                .append("1 0 0,1 0 0 1").append(LINE_SEPARATOR)
-                .append("2 0,1 0 0 0 0,2").append(LINE_SEPARATOR)
-                .append("3 0 0 0 -9,5 5").append(LINE_SEPARATOR)
-                .append("4 0 0 -9,5 0 2,3").append(LINE_SEPARATOR)
-                .append("5 1 0,2 5 2,3 0")
+                .append("1 0 0.1 0 0 1").append(LINE_SEPARATOR)
+                .append("2 0.1 0 0 0 0.2").append(LINE_SEPARATOR)
+                .append("3 0 0 0 -9.5 5").append(LINE_SEPARATOR)
+                .append("4 0 0 -9.5 0 2.3").append(LINE_SEPARATOR)
+                .append("5 1 0.2 5 2.3 0")
                 .toString();
 
         String matrix = GraphFormatter.getAdjacencyMatrix(weightedGraphExample1);
@@ -152,11 +151,11 @@ public class GraphFormatterTest {
     void weightedGraphExample2MatrixRepresentationTest() {
         String expectedMatrix = new StringBuilder()
                 .append("  1 2 3 4 5").append(LINE_SEPARATOR)
-                .append("1 0 0,1 0 0 1").append(LINE_SEPARATOR)
-                .append("2 0,1 0 0 0 0,2").append(LINE_SEPARATOR)
-                .append("3 0 0 0 9,5 5").append(LINE_SEPARATOR)
-                .append("4 0 0 9,5 0 2,3").append(LINE_SEPARATOR)
-                .append("5 1 0,2 5 2,3 0")
+                .append("1 0 0.1 0 0 1").append(LINE_SEPARATOR)
+                .append("2 0.1 0 0 0 0.2").append(LINE_SEPARATOR)
+                .append("3 0 0 0 9.5 5").append(LINE_SEPARATOR)
+                .append("4 0 0 9.5 0 2.3").append(LINE_SEPARATOR)
+                .append("5 1 0.2 5 2.3 0")
                 .toString();
 
         String matrix = GraphFormatter.getAdjacencyMatrix(weightedGraphExample2);
