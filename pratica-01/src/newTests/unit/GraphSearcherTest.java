@@ -238,8 +238,8 @@ public class GraphSearcherTest {
     public void DFSRegularGraphTest() {
         String regularFrom1 = "1 - - 0\n"
             + "2 - 1 1\n"
-            + "4 - 2 2\n"
-            + "3 - 4 3\n";
+            + "3 - 4 3\n"
+            + "4 - 2 2\n";
         assertEquals(regularFrom1, GraphSearcher.dfs(regularGraph,1));
     }
 
@@ -250,8 +250,8 @@ public class GraphSearcherTest {
     public void DFSCompleteGraphTest() {
         String completeFrom1 = "1 - - 0\n"
             + "2 - 1 1\n"
-            + "4 - 2 2\n"
-            + "3 - 4 3\n";
+            + "3 - 4 3\n"
+            + "4 - 2 2\n";
         assertEquals(completeFrom1, GraphSearcher.dfs(completeGraph,1));
     }
 
@@ -262,8 +262,8 @@ public class GraphSearcherTest {
     public void DFSDisconnectedGraphTest() {
         String disconnectedFrom1 = "1 - - 0\n"
                 + "2 - 1 1\n"
-                + "4 - 2 2\n"
-                + "3 - 4 3\n";
+                + "3 - 4 3\n"
+                + "4 - 2 2\n";
         String disconnectedFrom5 = "5 - - 0\n"
                 + "6 - 5 1\n";
         assertEquals(disconnectedFrom1, GraphSearcher.dfs(disconnectedGraph,1));
