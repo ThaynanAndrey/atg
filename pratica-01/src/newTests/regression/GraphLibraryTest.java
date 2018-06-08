@@ -29,7 +29,7 @@ public class GraphLibraryTest {
 
     private GraphLibrary graphLibrary;
     private Graph regularGraph;
-    private Graph disconectedGraph;
+    private Graph disconnectedGraph;
 
     /**
      * Tests set up.
@@ -58,12 +58,12 @@ public class GraphLibraryTest {
 		Edge edge12 = new Edge(1,2);
 		Edge edge34 = new Edge(3,4);
 		
-		this.disconectedGraph = new Graph();
-		this.disconectedGraph.addEdge(1, edge12);
-		this.disconectedGraph.addEdge(2, edge12);
+		this.disconnectedGraph = new Graph();
+		this.disconnectedGraph.addEdge(1, edge12);
+		this.disconnectedGraph.addEdge(2, edge12);
 		
-		this.disconectedGraph.addEdge(3, edge34);
-		this.disconectedGraph.addEdge(4, edge34);
+		this.disconnectedGraph.addEdge(3, edge34);
+		this.disconnectedGraph.addEdge(4, edge34);
 		
 	}
 	
@@ -470,10 +470,11 @@ public class GraphLibraryTest {
                  + "6 - 1 1";
          assertEquals(regularMST, graphLibrary.mst(regularGraph));
     }
-    
-    void DisconnetedMSTTest() {
+
+    @Test
+    void disconnetedMSTTest() {
     	String disconnectedMST = "Grafo desconctado";
-		assertEquals(disconnectedMST, graphLibrary.mst(disconectedGraph));
+		assertEquals(disconnectedMST, graphLibrary.mst(disconnectedGraph));
     }
 
     /**
