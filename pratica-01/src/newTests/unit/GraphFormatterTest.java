@@ -13,7 +13,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import static newTests.utils.UtilsTest.LINE_SEPARATOR;
+import static newTests.utils.UtilsTest.*;
 
 /**
  * Class to test {@link GraphFormatter}.
@@ -25,10 +25,6 @@ public class GraphFormatterTest {
     private static final String GRAPH_EXAMPLE_1_PATH = "src/sample_graph.txt";
     private static final String WEIGHTED_GRAPH_EXAMPLE_1_PATH = "src/sample_weighted_graph.txt";
     private static final String WEIGHTED_GRAPH_EXAMPLE_2_PATH = "src/sample_weighted_graph2.txt";
-    private static final String RESOURCES_PATH = "src/newTests/resources/";
-    private static final String GRAPHS_PATH = RESOURCES_PATH + "graphs/";
-    private static final String LIST_REPRESENTATION_PATH = RESOURCES_PATH + "listRepresentation/";
-    private static final String MATRIX_REPRESENTATION_PATH = RESOURCES_PATH + "matrixRepresentation/";
 
     private GraphLibrary graphLibrary;
     private Graph graphExample;

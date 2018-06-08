@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.List;
 
+import static newTests.utils.UtilsTest.GRAPHS_PATH;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -90,7 +91,7 @@ public class GraphReaderTest {
      */
     @Test
     public void readDenseUnweightedGraphTest() {
-        String path = "src/newTests/resources/dense_unweighted_graph_500.txt";
+        String path = GRAPHS_PATH + "dense_unweighted_graph_500.txt";
         RawGraph rawGraph = GraphReader.read(path);
 
         assertEquals(rawGraph.getVertexNumber(), 500);
@@ -102,7 +103,7 @@ public class GraphReaderTest {
      */
     @Test
     public void readDenseWeightedGraphTest() {
-        String path = "src/newTests/resources/dense_weighted_graph_500.txt";
+        String path = GRAPHS_PATH + "dense_weighted_graph_500.txt";
         RawGraph rawGraph = GraphReader.read(path);
 
         assertEquals(rawGraph.getVertexNumber(), 500);
@@ -114,7 +115,7 @@ public class GraphReaderTest {
      */
     @Test
     public void readSparseUnweightedGrapTest() {
-        String path = "src/newTests/resources/sparse_unweighted_graph_500.txt";
+        String path = GRAPHS_PATH + "sparse_unweighted_graph_500.txt";
         RawGraph rawGraph = GraphReader.read(path);
 
         assertEquals(rawGraph.getVertexNumber(), 500);
@@ -126,7 +127,7 @@ public class GraphReaderTest {
      */
     @Test
     public void readSparseWeightedGrapTest() {
-        String path = "src/newTests/resources/sparse_weighted_graph_500.txt";
+        String path = GRAPHS_PATH + "sparse_weighted_graph_500.txt";
         RawGraph rawGraph = GraphReader.read(path);
 
         assertEquals(rawGraph.getVertexNumber(), 500);

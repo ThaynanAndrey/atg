@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static newTests.utils.UtilsTest.GRAPHS_PATH;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -111,7 +112,7 @@ public class GraphCreatorTest {
      */
     @Test
     public void createDenseUnweightedGraphTest() {
-        String path = "src/newTests/resources/dense_unweighted_graph_500.txt";
+        String path = GRAPHS_PATH + "dense_unweighted_graph_500.txt";
         Graph graph = GraphCreator.createGraph(path);
         Set<Edge> allEdges = getGraphEdges(graph);
 
@@ -125,7 +126,7 @@ public class GraphCreatorTest {
      */
     @Test
     public void createDenseWeightedGraphTest() {
-        String path = "src/newTests/resources/dense_weighted_graph_500.txt";
+        String path = GRAPHS_PATH + "dense_weighted_graph_500.txt";
         Graph graph = GraphCreator.createGraph(path);
         Set<Edge> allEdges = getGraphEdges(graph);
 
@@ -139,7 +140,7 @@ public class GraphCreatorTest {
      */
     @Test
     public void createSparseUnweightedGraphTest() {
-        String path = "src/newTests/resources/sparse_unweighted_graph_500.txt";
+        String path = GRAPHS_PATH + "sparse_unweighted_graph_500.txt";
         Graph graph = GraphCreator.createGraph(path);
         Set<Edge> allEdges = getGraphEdges(graph);
 
@@ -153,7 +154,7 @@ public class GraphCreatorTest {
      */
     @Test
     public void createSparseWeightedGraphTest() {
-        String path = "src/newTests/resources/sparse_weighted_graph_500.txt";
+        String path = GRAPHS_PATH + "sparse_weighted_graph_500.txt";
         Graph graph = GraphCreator.createGraph(path);
         Set<Edge> allEdges = getGraphEdges(graph);
 

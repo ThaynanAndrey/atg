@@ -13,6 +13,10 @@ import java.io.IOException;
 public class UtilsTest {
 
     public static final String LINE_SEPARATOR = "\n";
+    public static final String RESOURCES_PATH = "src/newTests/resources/";
+    public static final String GRAPHS_PATH = RESOURCES_PATH + "graphs/";
+    public static final String LIST_REPRESENTATION_PATH = RESOURCES_PATH + "listRepresentation/";
+    public static final String MATRIX_REPRESENTATION_PATH = RESOURCES_PATH + "matrixRepresentation/";
 
     /**
      * Insert file for future tests.
