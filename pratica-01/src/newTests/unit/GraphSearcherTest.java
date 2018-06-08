@@ -41,11 +41,11 @@ public class GraphSearcherTest {
 
     /**
      * Create a regular graph with the following structure
-     *      1 2 3 4 5 6
-     * 1    0 I I 0 0 0
-     * 2    I 0 0 I 0 0
-     * 3    I 0 0 I 0 0
-     * 4    0 I I 0 0 0
+     *      1 2 3 4
+     * 1    0 I I 0
+     * 2    I 0 0 I
+     * 3    I 0 0 I
+     * 4    0 I I 0
      *
      * 0 = there's not a edge between these vertexes.
      * I = there's a edge between these vertexes.
@@ -67,11 +67,11 @@ public class GraphSearcherTest {
 
     /**
      * Create a complete graph with the following structure
-     *      1 2 3 4 5 6
-     * 1    0 I I I 0 0
-     * 2    I 0 0 I 0 0
-     * 3    I 0 0 I 0 0
-     * 4    I I I 0 0 0
+     *      1 2 3 4
+     * 1    0 I I I
+     * 2    I 0 0 I
+     * 3    I 0 0 I
+     * 4    I I I 0
      *
      * 0 = there's not a edge between these vertexes.
      * I = there's a edge between these vertexes.
@@ -131,11 +131,11 @@ public class GraphSearcherTest {
 
     /**
      * Create a graph with a loop with the following structure
-     *      1 2 3 4 5 6
-     * 1    I I I 0 0 0
-     * 2    I 0 0 I 0 0
-     * 3    I 0 0 I 0 0
-     * 4    0 I I 0 0 0
+     *      1 2 3 4
+     * 1    I I I 0
+     * 2    I 0 0 I
+     * 3    I 0 0 I
+     * 4    0 I I 0
      *
      * 0 = there's not a edge between these vertexes.
      * I = there's a edge between these vertexes.
@@ -211,11 +211,12 @@ public class GraphSearcherTest {
         assertEquals(disconnectedBFSFrom1,GraphSearcher.bfs(disconnectedGraph,1));
         assertEquals(disconnectedBFSFrom5, GraphSearcher.bfs(disconnectedGraph, 5));
     }
+
     /**
      * Test BFS in a graph with a loop
      */
     @Test
-    public void BFSLoopGraph(){
+    public void BFSLoopGraphTest(){
         String loopBFSFrom1 = "1 - 0 -" + "\n"
                 + "2 - 1 1" + "\n"
                 + "3 - 1 1" + "\n"
