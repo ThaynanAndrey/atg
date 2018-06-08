@@ -2,6 +2,7 @@ package newTests.regression;
 
 import graph.Edge;
 import graph.Graph;
+import graph.GraphConnectivity;
 import library.GraphLibrary;
 import newTests.utils.UtilsTest;
 import org.junit.jupiter.api.AfterAll;
@@ -178,4 +179,26 @@ public class GraphLibraryTest {
         assertEquals(regularBFSFrom1, graphLibrary.BFS(regularGraph,1));
     }
 
+    /**
+     * Test DFS in a regular graph with loop
+     */
+    @Test
+    public void DFSRegularGraphTest() {
+        String regularDFSFrom1 = "1 - - 0" + LINE_SEPARATOR
+                + "2 - 1 1" + LINE_SEPARATOR
+                + "3 - 2 2" + LINE_SEPARATOR
+                + "4 - 2 2" + LINE_SEPARATOR
+                + "5 - 4 3" + LINE_SEPARATOR
+                + "6 - 1 1" + LINE_SEPARATOR;
+        assertEquals(regularDFSFrom1, graphLibrary.DFS(regularGraph,1));
+    }
+
+    /**
+     * Test graph connectivity
+     */
+
+    @Test
+    public void isConnectedTest() {
+        assertTrue(GraphConnectivity.isConnected(regularGraph));
+    }
 }
