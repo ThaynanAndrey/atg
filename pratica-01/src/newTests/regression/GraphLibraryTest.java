@@ -105,5 +105,10 @@ public class GraphLibraryTest {
         assertTrue(allVertexes.contains(5));
         assertTrue(allVertexes.contains(6));
     }
+    
+    @Test
+    void MSTTest() {
+    	String path = "weighted_graph.txt";
+    }
 
 }
