@@ -46,6 +46,7 @@ public class GraphLibraryTest {
     public static void deleteFiles() {
         UtilsTest.deleteFile("graph.txt");
         UtilsTest.deleteFile("weighted_graph.txt");
+        UtilsTest.deleteFile("disconnected_graph.txt");
     }
 
     /**
@@ -446,6 +447,103 @@ public class GraphLibraryTest {
     @Test
     public void isConnectedTest() {
         assertTrue(GraphConnectivity.isConnected(regularGraph));
+    }
+
+    /**
+     * Tests the shortest path in a unweighted graph.
+     */
+    @Test
+    void shortestPathTest() {
+        String expectedPathBetween1And5 = "1 2 4 5";
+        String expectedPathBetween6And6 = "6";
+        String expectedPathBetween6And5 = "6 1 2 4 5";
+        String expectedPathBetween5And6 = "5 4 2 1 6";
+        String expectedPathBetween3And4 = "3 2 4";
+
+        assertEquals(expectedPathBetween1And5,
+                graphLibrary.shortestPath(regularGraph,1, 5));
+        assertEquals(expectedPathBetween6And6,
+                graphLibrary.shortestPath(regularGraph,6, 6));
+        assertEquals(expectedPathBetween6And5,
+                graphLibrary.shortestPath(regularGraph,6, 5));
+        assertEquals(expectedPathBetween5And6,
+                graphLibrary.shortestPath(regularGraph,5, 6));
+        assertEquals(expectedPathBetween3And4,
+                graphLibrary.shortestPath(regularGraph,3, 4));
+    }
+
+    /**
+     * Tests the shortest path in a weighted graph.
+     */
+    @Test
+    void shortestPathWeightedGraphTest() {
+        Graph weightedGraph = graphLibrary.readWeightedGraph("src/sample_weighted_graph2.txt");
+
+        String expectedPathBetween1And3 = "1 2 5 3";
+        String expectedPathBetween1And4 = "1 2 5 4";
+        String expectedPathBetween3And2 = "3 5 2";
+        String expectedPathBetween5And2 = "5 2";
+        String expectedPathBetween5And5 = "5";
+
+        assertEquals(expectedPathBetween1And3,
+                graphLibrary.shortestPath(weightedGraph,1, 3));
+        assertEquals(expectedPathBetween1And4,
+                graphLibrary.shortestPath(weightedGraph,1, 4));
+        assertEquals(expectedPathBetween3And2,
+                graphLibrary.shortestPath(weightedGraph,3, 2));
+        assertEquals(expectedPathBetween5And2,
+                graphLibrary.shortestPath(weightedGraph,5, 2));
+        assertEquals(expectedPathBetween5And5,
+                graphLibrary.shortestPath(weightedGraph,5, 5));
+    }
+
+    /**
+     * Tests the shortest path in a weighted graph with negative circles.
+     */
+    @Test
+    void shortestPathWeightedGraphNegativeCircleTest() {
+        Graph weightedGraph = graphLibrary.readWeightedGraph("src/sample_weighted_graph.txt");
+        String expectedError = "O grafo contém um ciclo de pesos negativos.";
+
+        assertEquals(expectedError,
+                graphLibrary.shortestPath(weightedGraph,1, 3));
+        assertEquals(expectedError,
+                graphLibrary.shortestPath(weightedGraph,1, 4));
+        assertEquals(expectedError,
+                graphLibrary.shortestPath(weightedGraph,3, 2));
+        assertEquals(expectedError,
+                graphLibrary.shortestPath(weightedGraph,5, 2));
+        assertEquals(expectedError,
+                graphLibrary.shortestPath(weightedGraph,5, 5));
+    }
+
+    /**
+     * Tests the shortest path in a unweighted disconnected graph.
+     */
+    @Test
+    void shortestPathDisconnectGraphTest() {
+        String path = "disconnected_graph.txt";
+        String fileContent = "5, 1 2, 3 2, 5 4";
+        insertFile(path, fileContent);
+        Graph disconnectedGraph = graphLibrary.readGraph(path);
+
+        assertEquals("1 2 3", GraphConnectivity
+                .getShortestPathUnweighted(disconnectedGraph, 1, 3));
+        assertEquals("3 2 1", GraphConnectivity
+                .getShortestPathUnweighted(disconnectedGraph, 3, 1));
+        assertEquals("4 5", GraphConnectivity
+                .getShortestPathUnweighted(disconnectedGraph, 4, 5));
+        assertEquals("2 1", GraphConnectivity
+                .getShortestPathUnweighted(disconnectedGraph, 2, 1));
+
+        assertEquals("", GraphConnectivity
+                .getShortestPathUnweighted(disconnectedGraph, 1, 4));
+        assertEquals("", GraphConnectivity
+                .getShortestPathUnweighted(disconnectedGraph, 4, 1));
+        assertEquals("", GraphConnectivity
+                .getShortestPathUnweighted(disconnectedGraph, 1, 5));
+        assertEquals("", GraphConnectivity
+                .getShortestPathUnweighted(disconnectedGraph, 5, 1));
     }
 
 }
