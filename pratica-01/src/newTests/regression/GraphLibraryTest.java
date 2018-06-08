@@ -8,6 +8,7 @@ import library.GraphLibrary;
 import newTests.utils.UtilsTest;
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +18,8 @@ import java.util.stream.Collectors;
 
 import static newTests.utils.UtilsTest.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -44,8 +47,8 @@ public class GraphLibraryTest {
     /**
      * Deletes the files created for the tests.
      */
-    @AfterAll
-    public static void deleteFiles() {
+    @AfterEach
+    public void deleteFiles() {
         UtilsTest.deleteFile("graph.txt");
         UtilsTest.deleteFile("weighted_graph.txt");
         UtilsTest.deleteFile("disconnected_graph.txt");
@@ -184,6 +187,65 @@ public class GraphLibraryTest {
         assertEquals(allVertexes.size(), vertexAmount);
         assertEquals(allEdges.size(), edgeAmount); // because getVertexNumber don't work!
         assertEquals(graph.getEdgeNumber(), edgeAmount);
+    }
+
+    /**
+     * Tests the getVertexNumber method.
+     */
+    @Test
+    void getVertexNumberTest() {
+        assertEquals(6, graphLibrary.getVertexNumber(regularGraph));
+        assertEquals(4, graphLibrary.getVertexNumber(disconnectedGraph));
+
+        Graph sampleGraph = graphLibrary.readGraph("src/sample_graph.txt");
+        Graph sampleWeightedGraph1 = graphLibrary.readGraph("src/sample_weighted_graph.txt");
+        Graph sampleWeightedGraph2 = graphLibrary.readGraph("src/sample_weighted_graph2.txt");
+        assertEquals(5, graphLibrary.getVertexNumber(sampleGraph));
+        assertEquals(5, graphLibrary.getVertexNumber(sampleWeightedGraph1));
+        assertEquals(5, graphLibrary.getVertexNumber(sampleWeightedGraph2));
+
+        String path = "graph.txt";
+        String fileContent = "6, 1 2, 1 3, 2 3, 5 6, 6 3, 6 1";
+        insertFile(path, fileContent);
+        Graph graph = graphLibrary.readGraph(path);
+        assertEquals(6, graphLibrary.getVertexNumber(graph));
+    }
+
+    /**
+     * Tests the getEdgeNumber method.
+     */
+    @Test
+    void getEdgeNumberTest() {
+        assertEquals(4, graphLibrary.getEdgeNumber(disconnectedGraph));
+        assertEquals(13, graphLibrary.getEdgeNumber(regularGraph));
+
+        String path = "graph.txt";
+        String fileContent = "6, 1 2, 1 3, 2 3, 5 6, 6 3, 6 1";
+        insertFile(path, fileContent);
+        Graph graph = graphLibrary.readGraph(path);
+        assertEquals(12, graphLibrary.getEdgeNumber(graph));
+    }
+
+    /**
+     * Tests the getMeanEdge method.
+     */
+    @Test
+    void getMeanEdgeTest() {
+        String path = "graph.txt";
+        String fileContent = "2, 1 1, 1 2, 2 2";
+        insertFile(path, fileContent);
+        Graph graph = graphLibrary.readGraph(path);
+        assertEquals(3, graphLibrary.getMeanEdge(graph));
+        assertEquals(1, graphLibrary.getMeanEdge(disconnectedGraph));
+    }
+
+    /**
+     * Tests the getMeanEdge method in a empty graph.
+     */
+    @Test
+    void getMeanEdgeEmptyGraphTest() {
+        Graph graph = new Graph();
+        graphLibrary.getMeanEdge(graph); // Throws exception
     }
 
     /**
