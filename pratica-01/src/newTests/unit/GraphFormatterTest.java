@@ -9,10 +9,6 @@ import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
 import static newTests.utils.UtilsTest.*;
 
 /**
@@ -26,7 +22,6 @@ public class GraphFormatterTest {
     private static final String WEIGHTED_GRAPH_EXAMPLE_1_PATH = "src/sample_weighted_graph.txt";
     private static final String WEIGHTED_GRAPH_EXAMPLE_2_PATH = "src/sample_weighted_graph2.txt";
 
-    private GraphLibrary graphLibrary;
     private Graph graphExample;
     private Graph weightedGraphExample1;
     private Graph weightedGraphExample2;
@@ -37,7 +32,6 @@ public class GraphFormatterTest {
      */
     @BeforeEach
     void setUp() {
-        graphLibrary = new GraphLibrary();
         graphExample = GraphCreator.createGraph(GRAPH_EXAMPLE_1_PATH);
         weightedGraphExample1 = GraphCreator.createGraph(WEIGHTED_GRAPH_EXAMPLE_1_PATH);
         weightedGraphExample2 = GraphCreator.createGraph(WEIGHTED_GRAPH_EXAMPLE_2_PATH);
@@ -200,237 +194,6 @@ public class GraphFormatterTest {
 
         String matrix = GraphFormatter.getAdjacencyMatrix(graph);
         Assert.assertEquals(expectedMatrix, matrix);
-    }
-
-    /**
-     * Tests the list representation of a dense unweighted graph with 100 vertexes.
-     */
-    @Test
-    void listRepresentationOfDenseUnweighted100Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "dense_unweighted_graph_100.txt";
-        String expectedAnswerFilePath = LIST_REPRESENTATION_PATH + "dense_unweighted_100_elements_graph_AL.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath);
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyList(graphExample));
-    }
-
-    /**
-     * Tests the list representation of a sparse unweighted graph with 100 vertexes.
-     */
-    @Test
-    void listRepresentationOfSparseUnweighted100Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "sparse_unweighted_graph_100.txt";
-        String expectedAnswerFilePath = LIST_REPRESENTATION_PATH + "sparse_unweighted_100_elements_graph_AL.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath);
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyList(graphExample));
-    }
-
-    /**
-     * Tests the list representation of a dense weighted graph with 100 vertexes.
-     */
-    @Test
-    void listRepresentationOfDenseWeighted100Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "dense_weighted_graph_100.txt";
-        String expectedAnswerFilePath = LIST_REPRESENTATION_PATH + "dense_weighted_100_elements_graph_AL.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath).replace(".", ",");
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyList(graphExample));
-    }
-
-    /**
-     * Tests the list representation of a sparse weighted graph with 100 vertexes.
-     */
-    @Test
-    void listRepresentationOfSparseWeighted100Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "sparse_weighted_graph_100.txt";
-        String expectedAnswerFilePath = LIST_REPRESENTATION_PATH + "sparse_weighted_100_elements_graph_AL.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath).replace(".", ",");
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyList(graphExample));
-    }
-
-    /**
-     * Tests the list representation of a dense unweighted graph with 500 vertexes.
-     */
-    @Test
-    void listRepresentationOfDenseUnweighted500Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "dense_unweighted_graph_500.txt";
-        String expectedAnswerFilePath = LIST_REPRESENTATION_PATH + "dense_unweighted_500_elements_graph_AL.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath);
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyList(graphExample));
-    }
-
-    /**
-     * Tests the list representation of a sparse unweighted graph with 500 vertexes.
-     */
-    @Test
-    void listRepresentationOfSparseUnweighted500Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "sparse_unweighted_graph_500.txt";
-        String expectedAnswerFilePath = LIST_REPRESENTATION_PATH + "sparse_unweighted_500_elements_graph_AL.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath);
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyList(graphExample));
-    }
-
-    /**
-     * Tests the list representation of a dense weighted graph with 500 vertexes.
-     */
-    @Test
-    void listRepresentationOfDenseWeighted500Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "dense_weighted_graph_500.txt";
-        String expectedAnswerFilePath = LIST_REPRESENTATION_PATH + "dense_weighted_500_elements_graph_AL.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath).replace(".", ",");
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyList(graphExample));
-    }
-
-    /**
-     * Tests the list representation of a sparse weighted graph with 500 vertexes.
-     */
-    @Test
-    void listRepresentationOfSparseWeighted500Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "sparse_weighted_graph_500.txt";
-        String expectedAnswerFilePath = LIST_REPRESENTATION_PATH + "sparse_weighted_500_elements_graph_AL.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath).replace(".", ",");
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyList(graphExample));
-    }
-
-    /**
-     * Tests the matrix representation of a dense unweighted graph with 100 vertexes.
-     */
-    @Test
-    void matrixRepresentationOfDenseUnweighted100Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "dense_unweighted_graph_100.txt";
-        String expectedAnswerFilePath = MATRIX_REPRESENTATION_PATH + "dense_unweighted_100_elements_graph_AM.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath);
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyMatrix(graphExample));
-    }
-
-    /**
-     * Tests the matrix representation of a sparse unweighted graph with 100 vertexes.
-     */
-    @Test
-    void matrixRepresentationOfSparseUnweighted100Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "sparse_unweighted_graph_100.txt";
-        String expectedAnswerFilePath = MATRIX_REPRESENTATION_PATH + "sparse_unweighted_100_elements_graph_AM.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath);
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyMatrix(graphExample));
-    }
-
-    /**
-     * Tests the matrix representation of a dense weighted graph with 100 vertexes.
-     */
-    @Test
-    void matrixRepresentationOfDenseWeighted100Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "dense_weighted_graph_100.txt";
-        String expectedAnswerFilePath = MATRIX_REPRESENTATION_PATH + "dense_weighted_100_elements_graph_AM.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath).replace(".", ",");
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyMatrix(graphExample));
-    }
-
-    /**
-     * Tests the matrix representation of a sparse weighted graph with 100 vertexes.
-     */
-    @Test
-    void matrixRepresentationOfSparseWeighted100Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "sparse_weighted_graph_100.txt";
-        String expectedAnswerFilePath = MATRIX_REPRESENTATION_PATH + "sparse_weighted_100_elements_graph_AM.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath).replace(".", ",");
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyMatrix(graphExample));
-    }
-
-    /**
-     * Tests the matrix representation of a dense unweighted graph with 500 vertexes.
-     */
-    @Test
-    void matrixRepresentationOfDenseUnweighted500Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "dense_unweighted_graph_500.txt";
-        String expectedAnswerFilePath = MATRIX_REPRESENTATION_PATH + "dense_unweighted_500_elements_graph_AM.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath);
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyMatrix(graphExample));
-    }
-
-    /**
-     * Tests the matrix representation of a sparse unweighted graph with 500 vertexes.
-     */
-    @Test
-    void matrixRepresentationOfSparseUnweighted500Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "sparse_unweighted_graph_500.txt";
-        String expectedAnswerFilePath = MATRIX_REPRESENTATION_PATH + "sparse_unweighted_500_elements_graph_AM.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath);
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyMatrix(graphExample));
-    }
-
-    /**
-     * Tests the matrix representation of a dense weighted graph with 500 vertexes.
-     */
-    @Test
-    void matrixRepresentationOfDenseWeighted500Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "dense_weighted_graph_500.txt";
-        String expectedAnswerFilePath = MATRIX_REPRESENTATION_PATH + "dense_weighted_500_elements_graph_AM.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath).replace(".", ",");
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyMatrix(graphExample));
-    }
-
-    /**
-     * Tests the matrix representation of a sparse weighted graph with 500 vertexes.
-     */
-    @Test
-    void matrixRepresentationOfSparseWeighted500Vertexes() {
-        String graphFilePath = GRAPHS_PATH + "sparse_weighted_graph_500.txt";
-        String expectedAnswerFilePath = MATRIX_REPRESENTATION_PATH + "sparse_weighted_500_elements_graph_AM.txt";
-
-        Graph graphExample = graphLibrary.readGraph(graphFilePath);
-        String expected = getFileContent(expectedAnswerFilePath).replace(".", ",");
-        Assert.assertEquals(expected, GraphFormatter.getAdjacencyMatrix(graphExample));
-    }
-
-    /**
-     * Returns the content of file of specified path.
-     *
-     * @param path Path to the file.
-     * @return Content of file.
-     */
-    private String getFileContent(String path) {
-        try {
-            FileReader file = new FileReader(path);
-            BufferedReader bfFile = new BufferedReader(file);
-            StringBuilder fileContent = new StringBuilder();
-            String line;
-            while ((line = bfFile.readLine()) != null) {
-                fileContent.append(line).append(LINE_SEPARATOR);
-            }
-            file.close();
-            return fileContent.toString().trim();
-        } catch (IOException e) {
-            System.err.println("There was an error opening the file: " + e.getMessage());
-            throw new RuntimeException(e);
-        }
     }
 
 }
